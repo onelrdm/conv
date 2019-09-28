@@ -1,3 +1,4 @@
+// Package conv implements conversion functions between basic data types.
 package conv
 
 import (
@@ -10,6 +11,7 @@ var (
 	ErrUnknownType = errors.New("unknown type")
 )
 
+// ShouldInt64 converts the value into int64.
 func ShouldInt64(v interface{}) (int64, error) {
 	switch v := v.(type) {
 	case string:
@@ -49,6 +51,8 @@ func ShouldInt64(v interface{}) (int64, error) {
 	return 0, ErrUnknownType
 }
 
+// MustInt64 converts the value into int64.
+// It panics if an error occurs in conversion.
 func MustInt64(v interface{}) int64 {
 	ret, err := ShouldInt64(v)
 	if err != nil {
@@ -57,6 +61,7 @@ func MustInt64(v interface{}) int64 {
 	return ret
 }
 
+// ShouldFloat64 converts the value into float64.
 func ShouldFloat64(v interface{}) (float64, error) {
 	switch v := v.(type) {
 	case string:
@@ -96,6 +101,8 @@ func ShouldFloat64(v interface{}) (float64, error) {
 	return 0, ErrUnknownType
 }
 
+// MustFloat64 converts the value into float64.
+// It panics if an error occurs in conversion.
 func MustFloat64(v interface{}) float64 {
 	ret, err := ShouldFloat64(v)
 	if err != nil {
@@ -104,6 +111,7 @@ func MustFloat64(v interface{}) float64 {
 	return ret
 }
 
+// ShouldString converts the value into string.
 func ShouldString(v interface{}) (string, error) {
 	switch v := v.(type) {
 	case string:
@@ -143,6 +151,8 @@ func ShouldString(v interface{}) (string, error) {
 	}
 }
 
+// MustString converts the value into string.
+// It panics if an error occurs in conversion.
 func MustString(v interface{}) string {
 	ret, err := ShouldString(v)
 	if err != nil {
