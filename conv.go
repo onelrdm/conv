@@ -118,10 +118,10 @@ func ShouldString(v interface{}) (string, error) {
 		return v, nil
 	case fmt.Stringer:
 		return v.String(), nil
-	case bool:
-		return fmt.Sprintf("%t", v), nil
 	case []byte:
 		return string(v), nil
+	case bool:
+		return fmt.Sprintf("%t", v), nil
 	case uint:
 		return fmt.Sprintf("%d", v), nil
 	case uint8:
